@@ -1,1 +1,6 @@
 Good morning It is my repository for my school work to solve a problem in robotics
+
+1 launche the simulator by fille rep.sh
+2 load senne 
+3 launch simulation 
+4 launche in python3.6 robot_mission.py fille 
