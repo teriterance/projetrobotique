@@ -6,7 +6,6 @@ import time
 if __name__ == "__main__":
     rb = rob1a.Rob1A()
     rb.log_file_on()
-
     # loop to get 100 measurements of front sonar
     n = 100
     ts = np.zeros(n)
