@@ -65,7 +65,7 @@ class RobotControl:
             time.sleep(abs(-(t1-t0)+0.05))
             k = 0.01 #un coef pour la vitesse
             err = abs((odoLeftTmp-odoLeft)- angleLim)
-            vit = 20*err*k
+            vit = 10*err*k
             rb.set_speed(vit, -vit)
         # replace with your code
 
@@ -84,7 +84,7 @@ class RobotControl:
             time.sleep(abs(-(t1-t0)+0.05))
             k = 0.01#coef qui reglemente la vitesse
             err = abs((odoRightTmp-odoRight)- angleLim)
-            vit = 20*err*k
+            vit = 10*err*k
             rb.set_speed(-vit, vit)
             # replace with your code
 
@@ -98,7 +98,7 @@ class RobotControl:
         while True:
             t0 =time.time()
             odoLeftTmp, odoRightTmp = rb.get_odometers()
-            error = 10
+            error = 0.3199779*speed
             if abs((odoRightTmp-odoRight) - dist) <= error:
                 rb.set_speed(0,0)
                 break

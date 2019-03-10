@@ -38,8 +38,8 @@ if __name__ == "__main__":
     # compute the bias
     # ...
     biais = abs(meann - dis)
-    
     print(biais)
+    
     plt.plot(range(n), ts)
     plt.plot(range(n), np.ones(n)*dis)
     plt.plot(range(n), np.ones(n)*meann)
