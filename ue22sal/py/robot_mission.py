@@ -12,11 +12,11 @@ def suivreMur(rb, flt, mur, vitNom, pointPassage):
     derivOk = False
     derivError = 0
     deltaSpeed = 0
-    kp = 2
-    kd = 220
+    kp = 1.25
+    kd = 250
     distWallFront = 1
-    ts = np.zeros(8)
-    for i in range(8):
+    ts = np.zeros(10)
+    for i in range(10):
         t0 = time.time()
         ts[i] = rb.get_sonar(mur) -(0.045 + 0.20284722507)
         flt.ma_filter(ts[i])
@@ -39,7 +39,7 @@ def suivreMur(rb, flt, mur, vitNom, pointPassage):
         if i>8:
             distWallFront = rb.get_sonar("front") -(0.03 + 0.10081346333)
         i = i+1
-        print(deltaSpeed)
+        print(distWallLeft)
         time.sleep(abs(0.5-(t1-t0)))
 
 if __name__ == "__main__":
@@ -70,13 +70,16 @@ if __name__ == "__main__":
     time.sleep(0.5)
     #la fonction suivre un mur
     suivreMur(rb, flt, "left", 60, [0.5,1.5])  
-    time.sleep(2)
+    time.sleep(0.5)
     ctrl.inPlaceTurnRight(rb,100)
-    time.sleep(4)
+    time.sleep(0.5)
     suivreMur(rb, flt, "left", 60, [0.5,1.5])
-    ctrl.inPlaceTurnRight(rb,93)
-    time.sleep(4)
+    time.sleep(0.5)
+    ctrl.goLineOdometer(rb,0.1,60)
+    ctrl.inPlaceTurnRight(rb,90)
+    time.sleep(0.5)
     suivreMur(rb, flt, "left", 60, [0.5,1.5])
+    ctrl.goLineOdometer(rb,0.1,60)
     #on le fait tourner de 90 degre a droite
     
     # safe end : stop the robot, then stop the simulator

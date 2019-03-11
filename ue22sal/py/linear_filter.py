@@ -27,7 +27,7 @@ if __name__ == "__main__":
         ts[i] = rb.get_sonar("front")
 
         # select your filter here by removing comment sign
-        tf[i] = flt.ma_filter(ts[i])
+        tf[i] = flt.iir_filter(ts[i])
         #tf[i] = flt.iir_filter(ts[i])
 
         t1 = time.time()

@@ -42,13 +42,15 @@ class SonarFilter ():
         t[0] = v
         for i in range(self.ma_M-1):
             t[i + 1] = self.ma_memory[i]
-        vf = sum(t)/self.ma_M
+        vf = np.mean(t)
         self.ma_memory = t
         #vf = v  # no filter !!!
         # ...
         return vf
 
     def iir_filter (self,v):
+        v = self.iir_a*self.ma_memory[0] + self.iir_b*v
+        self.ma_memory[0] = v
         vf = v  # no filter !!!
         # ...
         return vf
@@ -65,7 +67,13 @@ class SonarFilter ():
         self.median_cnt = 0
         
     def median_filter (self,v):
-        vf = v  # no filter !!!
+        t = np.zeros(self.median_size)
+        for i in range(self.median_size-1):
+            t[i + 1] = self.median_memory[i]
+        t[0] = v
+        self.median_memory = t
+        t = np.sort(self.median_memory)
+        vf = t[2]  # no filter !!!
         # ...
         return vf
 
