@@ -6,9 +6,9 @@ class SonarFilter ():
 
     def __init__(self): 
         self.iir_last_value = 0.0
-        self.iir_a = 0.4 # a1 coefficient of the iir (recursive) filter
+        self.iir_a = 0.9 # a1 coefficient of the iir (recursive) filter
         self.iir_b = 1.0 - self.iir_a # b0 coefficient of the iir filter
-        self.ma_order = 10    # order of the MA filter
+        self.ma_order = 6    # order of the MA filter
         self.ma_M = self.ma_order + 1  # size of the MA filter (order +1)
         self.ma_memory = np.zeros(self.ma_M) # memory for MA filter
         self.ma_cnt = 0 # count the number of value in MA memory
@@ -49,11 +49,11 @@ class SonarFilter ():
         return vf
 
     def iir_filter (self,v):
-        v = self.iir_a*self.ma_memory[0] + self.iir_b*v
-        self.ma_memory[0] = v
-        vf = v  # no filter !!!
+        
+        self.iir_last_value = self.iir_a*self.iir_last_value + v*self.iir_b  # no filter !!!
+        
         # ...
-        return vf
+        return self.iir_last_value
 
 
     # median only for the advanced challenge
