@@ -1,6 +1,11 @@
-Good morning It is my repository for my school work to solve a problem in robotics
+This  project present How to use [VRep](https://github.com/robocomp/V-REP#robocompvrep-components) to simulate a Robot in a givent environnement
 
-1 launche the simulator by fille rep.sh
-2 load senne 
-3 launch simulation 
+The robot reaction's code are in file py. 
+
+## Step to use the project 
+
+1 launche the simulator : Using the fille rep.sh
+2 load senne : from folder senne 
+3 launch simulation : on the graphic interface
 4 launche in python3.6 robot_mission.py fille 
+
